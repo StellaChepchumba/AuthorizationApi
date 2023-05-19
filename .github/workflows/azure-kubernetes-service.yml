@@ -31,7 +31,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_CONTAINER_REGISTRY: gdlCR
+  AZURE_CONTAINER_REGISTRY: AuthenticationApi
   CONTAINER_NAME: app
   RESOURCE_GROUP: gdl_test_RG
   CLUSTER_NAME:   GDL_test
@@ -46,15 +46,11 @@ jobs:
 
       # Logs in with your Azure credentials
       - name: Azure login
-          uses: azure/CLI@v1
-          with:
-         azcliversion: 2.0.72
-        inlineScript: |
-          az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
-          az account list
+        uses: azure/login@v1.4.6
         with:
           client-id: d1695651-1210-430b-9d84-6cf3148a7809
-          tenant-id: 1bd894b8-8201-4469-9955-9ce552a6a83e
+          password: 1bd894b8-8201-4469-9955-9ce552a6a83e
+   
 
       # Builds and pushes an image up to your Azure Container Registry
       - name: Build and push image to ACR
