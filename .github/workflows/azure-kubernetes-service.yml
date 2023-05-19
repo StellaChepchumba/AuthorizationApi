@@ -45,11 +45,21 @@ jobs:
       - uses: actions/checkout@v3
 
 
+    #  - name: Install Azure cli
+    #   run: |
+    #     sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
+    #     curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+    #     AZ_REPO=$(lsb_release -cs)
+    #     echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
+    #     sudo apt-get update
+    #     sudo apt-get install azure-cli
+
       # Logs in with your Azure credentials
+
     - name: Azure login
         uses: azure/login@v1.4.6
         with:
-          client-id: 406c7644-ada2-4b3c-a13b-cb3c191564c5
+          client-id: d68c29a2-7985-46cb-ba50-0ebb44970f97
           tenant-id: 1bd894b8-8201-4469-9955-9ce552a6a83e
           subscription-id: d1695651-1210-430b-9d84-6cf3148a7809
 
