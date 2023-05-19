@@ -48,9 +48,9 @@ jobs:
       - name: Configure Azure credentials
         uses: azure-actions/configure-azure-credentials@v1
         with:
-        aws-access-key-id: ${{ secrets.AZURE_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AZURE_SECRET_ACCESS_KEY }}
-        aws-region: eu-west-1
+        azure-access-key-id: ${{ secrets.AZURE_ACCESS_KEY_ID }}
+        azure-secret-access-key: ${{ secrets.AZURE_SECRET_ACCESS_KEY }}
+        aws-region: east-US
 
 
       - name: Login to Azure ECR
