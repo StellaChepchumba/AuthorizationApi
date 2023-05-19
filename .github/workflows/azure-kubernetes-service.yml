@@ -51,6 +51,7 @@ jobs:
           client-id: 406c7644-ada2-4b3c-a13b-cb3c191564c5
           tenant-id: 1bd894b8-8201-4469-9955-9ce552a6a83e
           subscription-id: d1695651-1210-430b-9d84-6cf3148a7809
+      
 
       # Builds and pushes an image up to your Azure Container Registry
       - name: Build and push image to ACR
