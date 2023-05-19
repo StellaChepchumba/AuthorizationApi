@@ -23,33 +23,25 @@
 # For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples
 # For more options with the actions used below please refer to https://github.com/Azure/login
 
-name: Build and deploy an app to AKS
-
+name: auzure-deployment
 on:
   push:
-    branches: ["main"]
-  workflow_dispatch:
+    branches: [ main ]
 
-env:
-  AZURE_CONTAINER_REGISTRY: gdlCR
-  CONTAINER_NAME: app
-  RESOURCE_GROUP: gdl_test_RG
-  CLUSTER_NAME:   GDL_test
 jobs:
-  buildImage:
-    permissions:
-      contents: read
-      id-token: write
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      # Logs in with your Azure credentials
-      - name: Azure login
-        uses: azure/login@v1.4.6
-        with:
-          client-id: d1695651-1210-430b-9d84-6cf3148a7809
-          tenant-id: 1bd894b8-8201-4469-9955-9ce552a6a83e
+  buildandpush:
+    runs-on: [self-hosted, linux]
+    env: 
+      credentials: ${{ secrets.AZURE_CREDENTIALS }}
+      AZURE_CLIENT_ID: ${{ fromJSON(secrets.AZURE_CREDENTIALS)['406c7644-ada2-4b3c-a13b-cb3c191564c5'] }}
+      AZURE_CLIENT_SECRET: ${{ fromJSON(secrets.AZURE_CREDENTIALS)['rhz8Q~RXB0NZpnFDDyp9GOqHURkR4UYuZVVWebP1'] }}
+      AZURE_TENANT_ID: ${{ fromJSON(secrets.AZURE_CREDENTIALS)['1bd894b8-8201-4469-9955-9ce552a6a83e'] }}
+    - uses: azure/CLI@v1
+      with:
+        azcliversion: 2.0.72
+        inlineScript: |
+          az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+          az account list
 
       # Builds and pushes an image up to your Azure Container Registry
       - name: Build and push image to ACR
