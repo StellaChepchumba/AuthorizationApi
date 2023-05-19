@@ -48,9 +48,9 @@ jobs:
       - name: Configure Azure credentials
         uses: azure-actions/configure-azure-credentials@v1
         with:
-        azure-access-key-id: ${{ secrets.AZURE_ACCESS_KEY_ID }}
-        azure-secret-access-key: ${{ secrets.AZURE_SECRET_ACCESS_KEY }}
-        azure-region: east-US
+            azure-access-key-id: ${{ secrets.AZURE_ACCESS_KEY_ID }}
+            azure-secret-access-key: ${{ secrets.AZURE_SECRET_ACCESS_KEY }}
+            azure-region: east-US
 
 
       - name: Login to Azure ECR
