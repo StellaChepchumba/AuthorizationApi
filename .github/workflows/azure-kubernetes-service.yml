@@ -31,7 +31,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_CONTAINER_REGISTRY: AuthenticationApi
+  AZURE_CONTAINER_REGISTRY: gdlCR
   CONTAINER_NAME: app
   RESOURCE_GROUP: gdl_test_RG
   CLUSTER_NAME:   GDL_test
