@@ -30,11 +30,11 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
-env:
-  AZURE_CONTAINER_REGISTRY: AuthenticationApi
-  CONTAINER_NAME: app
-  RESOURCE_GROUP: gdl_test_RG
-  CLUSTER_NAME:   GDL_test
+# env:
+#   AZURE_CONTAINER_REGISTRY: AuthenticationApi
+#   CONTAINER_NAME: app
+#   RESOURCE_GROUP: gdl_test_RG
+#   CLUSTER_NAME:   GDL_test
 jobs:
   buildImage:
     permissions:
@@ -50,7 +50,7 @@ jobs:
         with:
         azure-access-key-id: ${{ secrets.AZURE_ACCESS_KEY_ID }}
         azure-secret-access-key: ${{ secrets.AZURE_SECRET_ACCESS_KEY }}
-        aws-region: east-US
+        azure-region: east-US
 
 
       - name: Login to Azure ECR
