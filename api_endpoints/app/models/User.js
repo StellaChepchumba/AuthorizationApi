@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const MySQL = require("mysql");
 
-const UserSchema = new mongoose.Schema(
+const User = new MySQL.Schema(
   {
     email: { type: String, required: true, unique: true },
     firstName: { type: String, required: true },
@@ -10,4 +10,4 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = MySQL.model("User", User);

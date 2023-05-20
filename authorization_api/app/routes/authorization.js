@@ -39,4 +39,17 @@ router.post("/generateToken", async (req, res) => {
     }
 })
 
-module.exports = router;
+module.exports = router;  
+const mysql = require('mysql');
+ 
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'stellah',
+  password: '37031956@stella',
+  database: 'Gdldata'
+});
+ 
+connection.connect((error) => {
+  if (error) throw error;
+  console.log('Connected to MySQL database!');
+});

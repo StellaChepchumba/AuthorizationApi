@@ -55,5 +55,16 @@ router.post("/login", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-module.exports = router;
+const mysql = require('mysql');
+ 
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'stellah',
+  password: '37031956@stella',
+  database: 'Gdldata'
+});
+ 
+connection.connect((error) => {
+  if (error) throw error;
+  console.log('Connected to MySQL database!');
+});
